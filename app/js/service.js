@@ -40,14 +40,6 @@ factory('offersService', function($q, $timeout) {
         }
     ];
 
-    if (!localStorage.noFluffPosting) {
-        localStorage.noFluffPosting = JSON.stringify(posting);
-        console.log(1);
-    } else {
-        posting = JSON.parse(localStorage.noFluffPosting);
-        console.log(2);
-    }
-
     return {
         getList: function() {
             var deferred = $q.defer();
@@ -61,11 +53,8 @@ factory('offersService', function($q, $timeout) {
         addOffer: function(offer) {
             var deferred = $q.defer();
 
-            posting.push(offer);
-            localStorage.noFluffPosting = JSON.stringify(posting);
-
             $timeout(function() {
-                deferred.resolve(posting);
+                deferred.resolve(posting.push(offer));
             }, 2000);
 
             return deferred.promise;
