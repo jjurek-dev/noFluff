@@ -1,0 +1,113 @@
+<div class="loader-container" ng-show="submitting">
+    <div class="flex-center">
+        <img src="img/loader.svg" alt="Submitting..." />
+        <p class="text-center">Submitting your offer...</p>
+    </div>
+</div>
+<div class="container" ng-show="!submitting">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center m-lg">Great, let's get started!</h2>
+        </div>
+        <div class="col-md-12 panel panel-posting p-md">
+            <form name="postingForm" ng-submit="addPosting()">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Title</label>
+                        <input ng-model="offer.title" name="title" required>
+                        <div ng-messages="postingForm.title.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">
+                                You need to provide us the job title!
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Company</label>
+                        <input ng-model="offer.company" name="company" required>
+                        <div ng-messages="postingForm.title.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">
+                                We need to know your company name!
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Minimum salary</label>
+                        <input type="number" step="1" name="salaryMin" min="0"
+                               max="{{ offer.salaryMax }}" ng-model="offer.salaryMin" required>
+                        <div ng-messages="postingForm.salaryMin.$error" role="alert" multiple>
+                            <div ng-message="max" class="my-message">
+                                Minimum salary cannot be greater than the maximum one!
+                            </div>
+                            <div ng-message="required" class="my-message">
+                                Minimum salary is obligatory!
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Maximum salary</label>
+                        <input type="number" step="1" name="salaryMax" min="{{ offer.salaryMin }}"
+                               max="{{ offer.salaryMin * 2 }}" ng-model="offer.salaryMax" required>
+                        <div ng-messages="postingForm.salaryMax.$error" role="alert" multiple>
+                            <div ng-message="max" class="my-message">
+                                Maximum salary cannot be more than twice as much as minumum one!
+                            </div>
+                            <div ng-message="min" class="my-message">
+                                Maximum salary cannot be lesser than the minumum one!
+                            </div>
+                            <div ng-message="required" class="my-message">
+                                Aim high!
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>City</label>
+                        <input ng-model="offer.city" name="city" required>
+                        <div ng-messages="postingForm.city.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">
+                                Would be nice to know where you at.
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Street</label>
+                        <input ng-model="offer.street" name="street" required>
+                        <div ng-messages="postingForm.city.$error" role="alert" multiple>
+                            <div ng-message="required" class="my-message">
+                                Street is important as well!
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Postal Code</label>
+                        <input name="postalCode" ng-model="offer.postalCode" placeholder="12-345"
+                               ng-pattern="/^[0-9]{2}-[0-9]{3}$/" md-maxlength="6" maxlength="6" required>
+                        <div ng-messages="postingForm.postalCode.$error" role="alert" multiple>
+                            <div ng-message="pattern" class="my-message">
+                                That doesn't look like a valid postal code.
+                            </div>
+                            <div ng-message="md-maxlength" class="my-message">
+                                Only postal code here please!
+                            </div>
+                            <div ng-message="required" class="my-message">
+                                No code at all?
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div class="col-md-12 text-center">
+                    <a ui-sref="home" class="btn btn-default btn-lg m-sm">Cancel</a>
+                    <button class="btn btn-primary btn-lg m-sm">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

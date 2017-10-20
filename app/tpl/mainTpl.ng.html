@@ -1,0 +1,68 @@
+<div class="loader-container" ng-show="!offersList">
+    <div class="flex-center">
+        <img src="img/loader.svg" alt="Loading..." />
+        <p class="text-center">Looking for the best offers...</p>
+    </div>
+</div>
+<div class="container" ng-show="offersList">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center m-lg">Hi, good to see you! Check out what you missed</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 pull-right m-b-md">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search fa-fw fa-lg"></i></span>
+                <input type="text" ng-model="searchFilter" placeholder="Type anything..." class="form-control"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-repeat="offer in filteredOffersList = ( offersList | filter: searchFilter)"
+             class="col-md-12 panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>{{ offer.title }}</h4>
+                </div>
+                <div class="panel-body text-center">
+                    <div class="col-sm-1 col-md-1 hidden-xs hidden-sm">
+                        {{ $index + 1 }}
+                    </div>
+                    <div class="col-sm-5 col-md-3">
+                        <md-tooltip>Company</md-tooltip>
+                        {{ offer.company }}</div>
+                    <div class="col-sm-3 col-md-1">
+                        <md-tooltip>Minimum salary</md-tooltip>
+                        {{ offer.salaryMin | currency:"$":0 }}
+                    </div>
+                    <div class="col-sm-3 col-md-1">
+                        <md-tooltip>Maximum salary</md-tooltip>
+                        {{ offer.salaryMax | currency:"$":0 }}
+                    </div>
+                    <div class="col-sm-4 col-md-2">
+                        <md-tooltip>City</md-tooltip>
+                        {{ offer.city }}
+                    </div>
+                    <div class="col-sm-4 col-md-2">
+                        <md-tooltip>Street</md-tooltip>
+                        {{ offer.street }}
+                    </div>
+                    <div class="col-sm-4 col-md-2">
+                        <md-tooltip>Postal code</md-tooltip>
+                        {{ offer.postalCode }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-hide="filteredOffersList.length" class="text-center">
+            <h3 class="m-lg">Sorry, nothing found!</h3>
+            <p>Then maybe... <i class="fa fa-arrow-down fa-lg"></i></p>
+        </div>
+        <div class="col-md-12 m-md text-center">
+            <a ui-sref="add" class="btn btn-primary btn-lg">
+                Add new posting
+            </a>
+        </div>
+    </div>
+</div>
