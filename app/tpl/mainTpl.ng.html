@@ -30,27 +30,40 @@
                         {{ $index + 1 }}
                     </div>
                     <div class="col-sm-5 col-md-3">
-                        <md-tooltip>Company</md-tooltip>
-                        {{ offer.company }}</div>
-                    <div class="col-sm-3 col-md-1">
-                        <md-tooltip>Minimum salary</md-tooltip>
-                        {{ offer.salaryMin | currency:"$":0 }}
+                        <span>
+                            <md-tooltip>Company</md-tooltip>
+                        {{ offer.company }}
+                        </span>
                     </div>
                     <div class="col-sm-3 col-md-1">
-                        <md-tooltip>Maximum salary</md-tooltip>
-                        {{ offer.salaryMax | currency:"$":0 }}
+                        <span>
+                            <md-tooltip>Minimum salary</md-tooltip>
+                            {{ offer.salaryMin | currency:"$":0 }}
+                        </span>
+                    </div>
+                    <div class="col-sm-3 col-md-1">
+                        <span>
+                            <md-tooltip>Maximum salary</md-tooltip>
+                            {{ offer.salaryMax | currency:"$":0 }}
+                        </span>
                     </div>
                     <div class="col-sm-4 col-md-2">
-                        <md-tooltip>City</md-tooltip>
-                        {{ offer.city }}
+                        <span>
+                            <md-tooltip>City</md-tooltip>
+                            {{ offer.city }}
+                        </span>
                     </div>
                     <div class="col-sm-4 col-md-2">
-                        <md-tooltip>Street</md-tooltip>
-                        {{ offer.street }}
+                        <span>
+                            <md-tooltip>Street</md-tooltip>
+                            {{ offer.street }}
+                        </span>
                     </div>
                     <div class="col-sm-4 col-md-2">
-                        <md-tooltip>Postal code</md-tooltip>
-                        {{ offer.postalCode }}
+                        <span>
+                            <md-tooltip>Postal code</md-tooltip>
+                            {{ offer.postalCode }}
+                        </span>
                     </div>
                 </div>
             </div>

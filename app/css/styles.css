@@ -19,8 +19,8 @@
     border-right: none;
   }
 }
-.no-fluff .panel.panel-default .panel-body > div {
-  cursor: pointer;
+.no-fluff .panel.panel-default .panel-body > div span {
+  cursor: help;
 }
 .no-fluff .panel.panel-default:hover {
   -webkit-transform: scale(1.02);
