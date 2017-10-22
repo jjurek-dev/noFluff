@@ -9,8 +9,6 @@ angular
         $stateProvider
             .state('home', {
                 url: '/',
-                controller: 'noFluffController',
-                controllerAs: 'ctrl',
                 templateUrl: 'tpl/mainTpl.ng.html'
             })
             .state('add', {

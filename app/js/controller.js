@@ -9,7 +9,6 @@ controller('noFluffController', function($scope, offersService, $state) {
 
     $scope.addPosting = function() {
         $scope.submitting = true;
-        console.log($scope.offer);
         offersService.addOffer($scope.offer).then(function(response) {
             if (response) {
                 $scope.submitting = false;

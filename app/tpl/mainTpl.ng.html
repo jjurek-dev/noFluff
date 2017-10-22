@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="row">
-        <div ng-repeat="offer in filteredOffersList = ( offersList | filter: searchFilter)"
+        <div ng-repeat="offer in filteredOffersList = ( offersList | filter: searchFilter) track by $index"
              class="col-md-12 panel-group">
             <div class="panel panel-default">
                 <div class="panel-heading">
