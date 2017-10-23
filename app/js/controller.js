@@ -11,8 +11,8 @@ controller('noFluffController', function($scope, offersService, $state) {
         $scope.submitting = true;
         offersService.addOffer($scope.offer).then(function(response) {
             if (response) {
-                $scope.submitting = false;
                 $state.go('home');
+                $scope.submitting = false;
             }
         });
     };
